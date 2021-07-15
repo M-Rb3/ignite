@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { gameDetailURL } from "../api";
 import { useHistory } from "react-router";
 
-const GameDeatil = () => {
+const GameDeatil = ({ pathId }) => {
   const history = useHistory();
+  console.log(typeof pathId);
   // Exit Detail
   const exitDetailHandler = (e) => {
     const element = e.target;
@@ -21,10 +21,12 @@ const GameDeatil = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <h3>{detail.name}</h3>
+                <motion.h3 layoutId={`title ${pathId}`}>
+                  {detail.name}
+                </motion.h3>
                 <p>Rating: {detail.rating}</p>
               </div>
               <Info>
@@ -37,7 +39,11 @@ const GameDeatil = () => {
               </Info>
             </Stats>
             <Media>
-              <img src={detail.background_image} alt={detail.name} />
+              <motion.img
+                layoutId={`image ${pathId}`}
+                src={detail.background_image}
+                alt={detail.name}
+              />
             </Media>
             <Description>
               <p>{detail.description_raw}</p>

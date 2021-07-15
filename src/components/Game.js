@@ -6,17 +6,24 @@ import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 import { Link } from "react-router-dom";
 const Game = ({ game }) => {
+  const stringID = game.id.toString();
+
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     dispatch(loadDetail(game.id));
     document.body.style.overflow = "hidden";
+    console.log(typeof stringID);
   };
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame layoutId={stringID} onClick={loadDetailHandler}>
       <Link to={`/game/${game.id}`}>
-        <h3>{game.name}</h3>
+        <h3 layoutId={`title ${stringID}`}>{game.name}</h3>
         <p>{game.released}</p>
-        <img src={game.background_image} alt={game.name} />
+        <motion.img
+          layoutId={`image ${stringID}`}
+          src={game.background_image}
+          alt={game.name}
+        />
       </Link>
     </StyledGame>
   );
@@ -28,12 +35,14 @@ const StyledGame = styled(motion.div)`
   text-align: center;
   border-radius: 1rem;
   cursor: pointer;
+  visibility: visible !important;
   img {
     width: 100%;
     height: 40vh;
     object-fit: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    visibility: visible !important;
   }
 `;
 export default Game;
