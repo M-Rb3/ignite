@@ -2,39 +2,55 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { gameDetailURL } from "../api";
+import { useHistory } from "react-router";
 
 const GameDeatil = () => {
-  const { detail, screenshots } = useSelector((state) => state.detail);
+  const history = useHistory();
+  // Exit Detail
+  const exitDetailHandler = (e) => {
+    const element = e.target;
+    if (element.classList.contains("shadow")) {
+      document.body.style.overflow = "auto";
+      history.push("/");
+    }
+  };
+  const { detail, screenshots, isLoading } = useSelector(
+    (state) => state.detail
+  );
   return (
-    <CardShadow>
-      <Detail>
-        <div className="stats">
-          <div className="rating">
-            <h3>{detail.name}</h3>
-            <p>Rating: {detail.rating}</p>
-          </div>
-          <div className="info">
-            <h3>Platforms</h3>
-            <div className="platforms">
-              {detail.platforms.map((data) => (
-                <h3 key={data.platform.id}>{data.platform.name}</h3>
+    <>
+      {!isLoading && (
+        <CardShadow className="shadow" onClick={exitDetailHandler}>
+          <Detail>
+            <Stats>
+              <div className="rating">
+                <h3>{detail.name}</h3>
+                <p>Rating: {detail.rating}</p>
+              </div>
+              <Info>
+                <h3>Platforms</h3>
+                <Platforms>
+                  {detail.platforms.map((data) => (
+                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                  ))}
+                </Platforms>
+              </Info>
+            </Stats>
+            <Media>
+              <img src={detail.background_image} alt={detail.name} />
+            </Media>
+            <Description>
+              <p>{detail.description_raw}</p>
+            </Description>
+            <div className="gallery">
+              {screenshots.results.map((img) => (
+                <img src={img.image} alt="game_screenshots" key={img.id} />
               ))}
             </div>
-          </div>
-        </div>
-        <div className="media">
-          <img src={detail.background_image} alt={detail.name} />
-        </div>
-        <div className="description">
-          <p>{detail.description}</p>
-        </div>
-        <div className="gallery">
-          {screenshots.results.map((img) => (
-            <img src={img.image} alt="game_screenshots" key={img.id} />
-          ))}
-        </div>
-      </Detail>
-    </CardShadow>
+          </Detail>
+        </CardShadow>
+      )}
+    </>
   );
 };
 
@@ -70,4 +86,29 @@ const Detail = styled(motion.div)`
   }
 `;
 
+const Stats = styled(motion.div)`
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+`;
+const Info = styled(motion.div)`
+  text-align: center;
+`;
+
+const Platforms = styled(motion.div)`
+  display: flex;
+  justify-content: space-evenly;
+  img {
+    margin-left: 3rem;
+  }
+`;
+const Media = styled(motion.div)`
+  margin-top: 5rem;
+  img {
+    width: 100%;
+  }
+`;
+const Description = styled(motion.div)`
+  /* margin: 0rem 2.5rem; */
+`;
 export default GameDeatil;

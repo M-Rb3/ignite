@@ -2,6 +2,9 @@ import axios from "axios";
 import { gameDetailURL, imgDetailURL } from "../api";
 
 export const loadDetail = (id) => async (dispatch) => {
+  dispatch({
+    type: "LOADING_DETAIL",
+  });
   const detail = await axios.get(gameDetailURL(id));
   const img = await axios.get(imgDetailURL(id));
 

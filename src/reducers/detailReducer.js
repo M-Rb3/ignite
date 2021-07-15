@@ -1,6 +1,7 @@
 const initState = {
-  detail: {},
-  screenshots: {},
+  detail: { platforms: [] },
+  screenshots: { results: [] },
+  isLoading: true,
 };
 
 const detailReducer = (state = initState, action) => {
@@ -10,6 +11,12 @@ const detailReducer = (state = initState, action) => {
         ...state,
         detail: action.payload.detail,
         screenshots: action.payload.screenshots,
+        isLoading: false,
+      };
+    case "LOADING_DETAIL":
+      return {
+        ...state,
+        isLoading: true,
       };
 
     default:
