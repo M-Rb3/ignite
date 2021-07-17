@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
 import { useDispatch } from "react-redux";
 import { loadSearch } from "../actions/searchAction";
-
+import { fadeIn } from "../animation";
 const Nav = () => {
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const Nav = () => {
     dispatch({ type: "CLEAR_SEARCH" });
   };
   return (
-    <SyledNav>
+    <SyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearHandler}>
         <img src={logo} alt="logo" />
         <h1>Ignite</h1>

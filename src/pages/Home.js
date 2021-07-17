@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { fadeIn } from "../animation";
 
 function Home() {
   const location = useLocation();
@@ -20,7 +21,7 @@ function Home() {
   );
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial="hidden" animate="show">
       <AnimateSharedLayout>
         <AnimatePresence>
           {pathId && <GameDeatil pathId={pathId} />}

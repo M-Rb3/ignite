@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 import { Link } from "react-router-dom";
+import { popup } from "../animation";
 const Game = ({ game }) => {
   const stringID = game.id.toString();
 
@@ -15,7 +16,13 @@ const Game = ({ game }) => {
     console.log(typeof stringID);
   };
   return (
-    <StyledGame layoutId={stringID} onClick={loadDetailHandler}>
+    <StyledGame
+      variants={popup}
+      initial="hidden"
+      animate="show"
+      layoutId={stringID}
+      onClick={loadDetailHandler}
+    >
       <Link to={`/game/${game.id}`}>
         <h3 layoutId={`title ${stringID}`}>{game.name}</h3>
         <p>{game.released}</p>
