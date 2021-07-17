@@ -44,3 +44,7 @@ export const gameDetailURL = (game_id) => {
 export const imgDetailURL = (game_id) => {
   return `${base_url}/${game_id}/screenshots?key=${process.env.REACT_APP_RAWG_API}`;
 };
+
+// Searched game
+export const searchGameURL = (game_name) =>
+  `${base_url}?key=${process.env.REACT_APP_RAWG_API}&search=${game_name}&page_size=9`;

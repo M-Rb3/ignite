@@ -15,13 +15,26 @@ function Home() {
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
-  const { popular, upcoming, newGames } = useSelector((state) => state.games);
+  const { popular, upcoming, newGames, searched } = useSelector(
+    (state) => state.games
+  );
+
   return (
     <GameList>
       <AnimateSharedLayout>
         <AnimatePresence>
           {pathId && <GameDeatil pathId={pathId} />}
         </AnimatePresence>
+        {searched.length ? (
+          <Games>
+            {searched.map((game) => (
+              <Game game={game} key={game.id} />
+            ))}
+          </Games>
+        ) : (
+          ""
+        )}
+
         <h2>Upcoming Games</h2>
         <Games>
           {upcoming.map((game) => (
