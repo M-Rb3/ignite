@@ -50,6 +50,9 @@ const StyledGame = styled(motion.div)`
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     visibility: visible !important;
+    @media screen and (max-width: 400px) {
+      height: 30vh;
+    }
   }
 `;
 export default Game;

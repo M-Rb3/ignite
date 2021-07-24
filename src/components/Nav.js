@@ -36,6 +36,9 @@ export default Nav;
 const SyledNav = styled(motion.nav)`
   padding: 3rem 5rem;
   text-align: center;
+  @media screen and (max-width: 400px) {
+    padding: 3rem 1rem;
+  }
   input {
     width: 30%;
     font-size: 1.5rem;
@@ -43,6 +46,16 @@ const SyledNav = styled(motion.nav)`
     border: none;
     margin-top: 1rem;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 750px) {
+      width: 60%;
+      display: inline-block !important;
+    }
+    @media screen and (max-width: 515px) {
+      width: 60%;
+    }
+    @media screen and (max-width: 430px) {
+      width: 50%;
+    }
   }
   button {
     font-size: 1.5rem;
@@ -51,6 +64,9 @@ const SyledNav = styled(motion.nav)`
     cursor: pointer;
     background: #ff7676;
     color: white;
+    @media screen and (max-width: 515px) {
+      padding: 0.5rem 1rem;
+    }
   }
 `;
 const Logo = styled(motion.div)`

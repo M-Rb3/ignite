@@ -24,9 +24,9 @@ const currentDate = `${currnetYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currnetYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currnetYear + 1}-${currentMonth}-${currentDay}`;
 
-const popularGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=12`;
-const newGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${lastYear},${currentDate}&ordering=-relasedg&page_size=12`;
-const upcomingGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${currnetYear},${nextYear}&ordering=-added&page_size=12`;
+const popularGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=35`;
+const newGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${lastYear},${currentDate}&ordering=-relasedg&page_size=27`;
+const upcomingGames = `?key=${process.env.REACT_APP_RAWG_API}&dates=${currnetYear},${nextYear}&ordering=-added&page_size=52`;
 
 export const popularGamesUrl = () => {
   return base_url + popularGames;

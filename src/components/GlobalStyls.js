@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.3rem;
         color: #333;
         padding: 1.5rem 0rem;
+        min-height: 6.1rem;
     }
     p{
         font-size: 1.2rem;
@@ -47,6 +48,35 @@ const GlobalStyle = createGlobalStyle`
         font-weight: bold;
         font-family: 'Montserrat', sans-serif;
     }
+    .pagination{
+        margin: 0 ;
+        margin-top: 2rem;
+        /* width: 80%; */
+        height: 40px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        a{
+        padding: 10px;
+        margin: 8px;
+        border-radius: 5px;
+        border: 1px solid #ff7676;
+        color: #ff7676;
+        cursor: pointer;
+        }
+        a:hover{
+        background-color: #ff7676;
+        color: white;
+        }
+        .active-page a{
+        background-color: #ff7676;
+        color: white;
+        }
+    }
+
+  
+
+    
 `;
 
 export default GlobalStyle;

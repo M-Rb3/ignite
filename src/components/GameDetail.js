@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 // Images
 import playstation from "../img/playstation.svg";
-import steam from "../img/steam.svg";
 import xbox from "../img/xbox.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
