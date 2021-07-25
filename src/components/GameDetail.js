@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 // Images
-import playstation from "../img/playstation.svg";
+// import playstation from "../img/playstation.svg";
+import playstation3 from "../img/playstation-3.svg";
+import playstation4 from "../img/playstation-4.svg";
+import playstation5 from "../img/playstation-5.svg";
 import xbox from "../img/xbox.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
@@ -30,10 +33,12 @@ const GameDeatil = ({ pathId }) => {
   // GET platforms Images
   const getPlaform = (platform) => {
     switch (platform) {
+      case "PlayStation 3":
+        return playstation3;
       case "PlayStation 4":
-        return playstation;
+        return playstation4;
       case "PlayStation 5":
-        return playstation;
+        return playstation5;
       case "Xbox One":
         return xbox;
       case "Xbox Series S/X":
@@ -135,6 +140,7 @@ const CardShadow = styled(motion.div)`
   top: 0;
   left: 0;
   z-index: 5;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -198,6 +204,7 @@ const Info = styled(motion.div)`
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   img {
     margin-left: 2.5rem;
     width: 4rem;
