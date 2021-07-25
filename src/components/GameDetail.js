@@ -77,23 +77,31 @@ const GameDeatil = ({ pathId }) => {
           <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <motion.h3 layoutId={`title ${pathId}`}>
-                  {detail.name}
-                </motion.h3>
-                <p>Rating: {detail.rating}</p>
-                {getStar()}
+                <div>
+                  <motion.h3 layoutId={`title ${pathId}`}>
+                    {detail.name}
+                  </motion.h3>
+                </div>
+                <div>
+                  <p>Rating: {detail.rating}</p>
+                  {getStar()}
+                </div>
               </div>
               <Info>
-                <h3>Platforms</h3>
-                <Platforms>
-                  {detail.platforms.map((data) => (
-                    <img
-                      key={data.platform.id}
-                      src={getPlaform(data.platform.name)}
-                      alt={data.platform.name}
-                    />
-                  ))}
-                </Platforms>
+                <div>
+                  <h3>Platforms</h3>
+                </div>
+                <div>
+                  <Platforms>
+                    {detail.platforms.map((data) => (
+                      <img
+                        key={data.platform.id}
+                        src={getPlaform(data.platform.name)}
+                        alt={data.platform.name}
+                      />
+                    ))}
+                  </Platforms>
+                </div>
               </Info>
             </Stats>
             <Media>
@@ -147,6 +155,9 @@ const Detail = styled(motion.div)`
   left: 10%;
   z-index: 10;
   color: black;
+  @media screen and (max-width: 450px) {
+    padding: 2rem 2rem;
+  }
   img {
     width: 100%;
   }
@@ -156,10 +167,28 @@ const Stats = styled(motion.div)`
   display: flex;
   align-self: center;
   justify-content: space-between;
+  @media screen and (max-width: 710px) {
+    justify-content: center;
+    text-align: center;
+  }
   img {
     width: 2rem;
     height: 2rem;
     display: inline;
+
+    @media screen and (max-width: 410px) {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+  h3 {
+    @media screen and (max-width: 710px) {
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 const Info = styled(motion.div)`
@@ -174,6 +203,10 @@ const Platforms = styled(motion.div)`
     width: 4rem;
 
     height: 3rem !important;
+    @media screen and (max-width: 800px) {
+      margin-left: 1rem;
+      margin-top: 1rem;
+    }
   }
 `;
 const Media = styled(motion.div)`
